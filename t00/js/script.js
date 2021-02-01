@@ -18,12 +18,6 @@ function HouseBuilder(address,description,owner,size,roomCount) {
     this.roomCount = roomCount;
 }
 
-
-function HouseBuilder(address,description,owner,size,roomCount) {
-    Object.getPrototypeOf(houseBlueprint).constructor.call(this,address,description,owner,size);
-    this.roomCount = roomCount;
-}
-
 const house = new HouseBuilder(
   "88 Crescent Avenue",
   "Spacious town house with wood flooring, 2-car garage, and a back patio.",

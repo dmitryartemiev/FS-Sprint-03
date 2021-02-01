@@ -1,2 +1,0 @@
-# FS-Sprint-03
-In the previous Sprint you have started using JavaScript, and, in particular, objects. Today, you will continue this learning path by getting up close and personal with object-oriented programming. The OOP model of programming is centered around data, rather than functions and procedures. It uses objects, which can be described as containers of data that have unique characteristicsand behaviors. When data is organized into objects, code becomes a lot more readable, scalable, and functional.
