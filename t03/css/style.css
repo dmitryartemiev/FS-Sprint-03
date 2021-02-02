@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 1, 5rem;
+  font-weight: 300;
+}
+.container {
+  border: 1px solid lightgray;
+  max-width: 1170px;
+
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(212, 185, 255);
+  border-radius: 10px;
+  background: linear-gradient(to top, rgb(158, 158, 255), rgb(255, 184, 184));
+}
+.image__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.portrait {
+  height: 400px;
+  border-radius: 30px;
+  border: 1px solid;
+  transition: ease-in-out .3s all;
+}
+.person__img {
+  display: block;
+}
+.superhero__img {
+  display: none;
+}
+.talk__container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 0 20px 20px 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: rgb(238, 238, 238);
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: larger;
+}
+.skills__container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.skill {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  background-color: rgb(229, 247, 253);
+  transition: ease-in-out all 0.2s;
+  cursor: pointer;
+}
+.turn {
+  background-color: rgb(255, 73, 73);
+  color: white;
+  font-weight: 700;
+}
+.skill:hover {
+  transform: scale(1.1);
+}
+.properties__container{
+    background-color: rgb(238, 238, 238);
+    margin: 20px;
+    padding: 0 20px 20px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.property__name{
+    font-weight: 500;
+    margin-right: 5px;
+}
+#calories{
+    display: inline;
+    transition: .2s ease all;
+}
+.properties__title{
+    font-weight: 700;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+.property__wrapper{
+    margin-top: 10px;
+}
+.property{
+    display: flex;
+}
+
+@media screen and (max-width: 1170px) {
+  .container {
+    margin: 50px 50px;
+  }
+  .skill{
+      margin: 0px 10px;
+  }
+}
