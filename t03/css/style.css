@@ -22,10 +22,13 @@ body {
   margin-top: 20px;
 }
 .portrait {
-  height: 400px;
+  
   border-radius: 30px;
   border: 1px solid;
   transition: ease-in-out .3s all;
+  max-width: 80%;
+  margin: 20px;
+  max-height: 400px;
 }
 .person__img {
   display: block;
@@ -62,7 +65,7 @@ body {
   transition: ease-in-out all 0.2s;
   cursor: pointer;
 }
-.turn {
+.turn, .fight {
   background-color: rgb(255, 73, 73);
   color: white;
   font-weight: 700;
@@ -78,10 +81,11 @@ body {
     border: 1px solid black;
 }
 .property__name{
+  display: inline;
     font-weight: 500;
     margin-right: 5px;
 }
-#calories{
+#calories, #hero__name, #laser{
     display: inline;
     transition: .2s ease all;
 }
@@ -95,6 +99,9 @@ body {
 }
 .property{
     display: flex;
+}
+.fly, .fight, .laser_beam, .shield, .property:nth-child(3), .laser_energy {
+  display: none;
 }
 
 @media screen and (max-width: 1170px) {
