@@ -5,34 +5,22 @@ let houseMixin = {
     this.description = this.description.replace(minus, plus);
   },
   wordInsertAfter(after, word) {
-    this.description = this.description.replace(after, after+' '+word);
+    this.description = this.description.replace(after, after + " " + word);
   },
   wordDelete(minus) {
-    this.description = this.description.replace(minus, '');
+    this.description = this.description.replace(minus, "");
   },
   wordEncrypt() {
-    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    alphabet = alphabet.split('')
-    let encryptAlphabet = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
-    encryptAlfabet = encryptAlphabet.split('')
-    for(let i = 0; i<this.description.length; i++){
-      if(alphabet.includes(this.description[i])){
-      let index = alphabet.indexOf(this.description[i])
-      this.description = this.description.replace(this.description[i], encryptAlphabet[index])
-     }
-    }
+    this.description = (this.description + "").replace(/[a-zA-Z]/gi, function (
+      s
+    ) {
+      return String.fromCharCode(
+        s.charCodeAt(0) + (s.toLowerCase() < "n" ? 13 : -13)
+      );
+    });
   },
   wordDecrypt() {
-    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    alphabet = alphabet.split('')
-    let encryptAlphabet = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
-    encryptAlfabet = encryptAlphabet.split('')
-    for(let i = 0; i<this.description.length; i++){
-      if(alphabet.includes(this.description[i])){
-      let index = encryptAlphabet.indexOf(this.description[i])
-      this.description = this.description.replace(this.description[i], alphabet[index])
-     }
-    }
+    this.wordEncrypt();
   },
 };
 
@@ -40,25 +28,25 @@ Object.assign(house, houseMixin);
 
 console.log(house.getDaysToBuild());
 // 220
-console.log(house.description + "old");
+console.log(house.description);
 // Spacious town house with wood flooring, 2-car garage, and a back patio.
 
 house.wordReplace("wood", "tile");
-console.log(house.description + " word replace");
+console.log(house.description);
 // Spacious town house with tile flooring, 2-car garage, and a back patio.
 
 house.wordDelete("town ");
-console.log(house.description + " word delete");
+console.log(house.description);
 // Spacious house with tile flooring, 2-car garage, and a back patio.
 
 house.wordInsertAfter("with", "marble");
-console.log(house.description + " word insert after");
+console.log(house.description);
 // Spacious house with marble tile flooring, 2-car garage, and a back patio.
 
 house.wordEncrypt();
-console.log(house.description + " word encrypt");
+console.log(house.description);
 // Fcnpvbhf ubhfr jvgu zneoyr gvyr sybbevat, 2-pne tnentr, naq n onpx cngvb.
 
 house.wordDecrypt();
-console.log(house.description + " word decrypt");
+console.log(house.description);
 // Spacious house with marble tile flooring, 2-car garage, and a back patio.
