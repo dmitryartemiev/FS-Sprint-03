@@ -1,80 +1,85 @@
-"use stict";
-
-class Node {
-  constructor(data, next = null) {
-    this.data = data;
-    this.next = next;
-  }
-}
+'use strict'
 
 class LinkedList {
-  constructor() {
-    this.head = null;
+  constructor(data) {
+    this.data = { ...data };
+    this.next = 0;
   }
-  getAt() {
-    let counter = 0;
-    let node = this.head;
-    while (node) {
-      if (counter === index) {
-        return node;
+
+  [Symbol.iterator] = () => {
+    return {
+      current: this.next,
+      structure: this.data,
+      next() {
+        if (this.structure[this.current] == undefined) {
+          return { done: true };
+        } else {
+          return { done: false, value: this.structure[this.current++] };
+        }
+      },
+    };
+  };
+
+  add(value) {
+    let count = 0;
+    let obj = {};
+
+    for (const item of this) {
+      obj[count] = item;
+      count++;
+    }
+    obj[count] = value;
+    this.data = obj;
+  }
+
+  remove(value) {
+    let count = 0;
+    let obj = {};
+    let find = false;
+    for (const item of this) {
+      if (item == value && find == false) {
+        find = true;
+        continue;
       }
-      counter++;
-      node = node.next;
+      obj[count] = item;
+      count++;
     }
-    return null;
+    this.data = obj;
   }
-  add(data) {
-    let newNode = new Node(data);
-    if (!this.head) {
-      this.head = newNode;
-      return this.head;
+  contains(value) {
+    for (const item of this) {
+      if (item == value) {
+        return true;
+      }
     }
-    let tail = this.head;
-    while (tail.next !== null) {
-      tail = tail.next;
-    }
-    tail.next = newNode;
-    return this.head;
-  }
-  remove(data) {
-    if (!this.head) {
-      this.head = new Node(data);
-      return;
-    }
-    if (this.head.data == data) {
-      this.head = this.head.next;
-      return;
-    } else {
-    }
+    return false;
   }
   clear() {
-    this.head = null;
+    this.data = {};
   }
   count() {
-    let count = 0;
-    let node = this.head;
-    while (node) {
-      count++;
-      node = node.next;
+    let counter = 0;
+    for (const item of this) {
+      counter++;
     }
-    return count;
+    return counter;
   }
-  *[Symbol.iterator]() {
-    for (let current = this.head; current !== null; current.next) {
-      return yield current;
-    }
+  log() {
+    let arr = Array.from(this);
+    console.log(arr.join(", "));
   }
 }
+function createLinkedList(array) {
+  return new LinkedList(array);
+}
 
-let list = new LinkedList();
-list.add(42);
-list.add(22);
-list.add(12);
-// list.remove(22);
-
-console.log( list[Symbol.iterator]());
-
-console.log(list);
-console.log(list.count());
-console.log(list.clear());
-console.log(list);
+const ll = createLinkedList([100, 1, 2, 3, 100, 4, 5, 100]);
+ll.add(10);
+ll.remove(100);
+ll.remove(100);
+ll.remove(100);
+console.log(ll.contains(100));
+ll.log();
+for (const n of ll) {
+  console.log(n);
+}
